@@ -194,42 +194,33 @@ having total >=10
 select id_customer, name, birthday, id_person from customer
 union all
 select id, name, birthday, id_person from employee
+;
 
+-- Bài 21 -- 
+create view v_employee as
+select distinct e.* from employee e
+join contract c on c.id_employee=e.id and year(c.start)=2021
+where e.address like '%Huế' 
+;
+select * from v_employee;
 
+-- Bài 22 --
+update v_employee
+set address='Đà Nẵng'
+;
 
+-- Bài 23 --
+delimiter //
+create procedure del_customer(p_id int)
+begin
+select * from customer
+where id_customer=p_id
+;
+end //
+delimiter ;
+call del_customer(4);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+-- Bài 25 --
 
 
 
