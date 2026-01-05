@@ -221,8 +221,16 @@ delimiter ;
 call del_customer(4);
 
 -- Bài 25 --
-
-
+delimiter //
+create trigger del_contract
+after delete on contract
+for each row
+begin
+	declare total_count int;
+	select count(*) into total_count from contract;
+	select total_count;
+end //
+delimiter ;
 
 
 
