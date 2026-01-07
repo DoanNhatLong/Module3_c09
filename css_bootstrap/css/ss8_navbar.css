@@ -1,0 +1,38 @@
+*{
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+.navbar{
+    height: 4rem;
+}
+
+.form-control{
+    border-radius: 1rem;
+}
+
+.form-control::placeholder {
+    color: #9ca3af;
+    opacity: 1;
+}
+
+.modal-dialog{
+    max-width: 40rem;
+}
+
+#menuButton2 + .dropdown-menu{
+    min-width: 13rem;
+    max-width: 30rem;
+}
+
+li {
+    list-style: none;
+}
+
+#subNavbar li{
+    color: white;
+}
+
+#subNavbar button{
+
+}

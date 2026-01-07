@@ -5,6 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bd4a8ed0-5d1d-4e9a-8342-76dce93877b7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/css/ss8_navbar.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/ss8_responsive.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ss8_navbar.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ss8_responsive.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/ss7_grid.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/ss7_grid.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/ss7_rwd.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/ss7_rwd.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ss7_rwd.html" beforeDir="false" afterPath="$PROJECT_DIR$/ss7_rwd.html" afterDir="false" />
@@ -70,7 +74,9 @@
       <updated>1767600431706</updated>
       <workItem from="1767600432762" duration="2257000" />
       <workItem from="1767665619519" duration="7421000" />
-      <workItem from="1767681166064" duration="1790000" />
+      <workItem from="1767681166064" duration="4531000" />
+      <workItem from="1767748926623" duration="12430000" />
+      <workItem from="1767767374181" duration="8867000" />
     </task>
     <servers />
   </component>
