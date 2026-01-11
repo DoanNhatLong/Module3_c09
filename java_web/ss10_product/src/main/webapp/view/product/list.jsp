@@ -79,7 +79,7 @@
     <div class="toast-container position-fixed top-0 end-0 p-3">
         <div class="toast show " role="alert">
             <div class="toast-header">
-                <strong class="me-auto">Thông báo</strong>
+                <strong class="me-auto text-primary">Thông báo</strong>
                 <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
             </div>
             <div class="toast-body">

@@ -228,7 +228,7 @@ for each row
 begin
 	declare total_count int;
 	select count(*) into total_count from contract;
-	select total_count;
+	select total_count;clazz
 end //
 delimiter ;
 

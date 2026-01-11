@@ -68,7 +68,9 @@ public class ProductController extends HttpServlet {
         double price = Double.parseDouble(req.getParameter("price"));
         Product temp = new Product(id, name, price);
         productService.addProduct(temp);
-        showList(req, resp);
+        String mess_add="Thêm mới thành công";
+        req.getSession().setAttribute("message", mess_add);
+        resp.sendRedirect("/products");
     }
 
     private void showList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
