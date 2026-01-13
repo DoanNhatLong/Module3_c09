@@ -22,6 +22,8 @@ public class StudentRepository implements IStudentRepository {
             "select s.*, c.name as class_name " +
                     "from student s join clazz c on s.id_class=c.id " +
                     "where s.id=?;";
+    private static final String UPDATE = "update student set name=?,gender=?,score=?, id_class=? where id=?";
+
 
     @Override
     public List<StudentDto> getAll() throws SQLException {
@@ -88,12 +90,76 @@ public class StudentRepository implements IStudentRepository {
                 String class_name = resultSet.getString("class_name");
                 int id_class = resultSet.getInt("id_class");
                 return new StudentDto(id_basic, name, gender, score, class_name, id_class);
-        }
+            }
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         return null;
 
+    }
+
+    @Override
+    public boolean updateStudent(Student student) {
+        System.out.println(student.getId());
+        Connection connection = DBConnection.getConnection();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(UPDATE);
+            preparedStatement.setString(1, student.getName());
+            preparedStatement.setBoolean(2, student.isGender());
+            preparedStatement.setDouble(3, student.getScore());
+            preparedStatement.setInt(4, student.getId_class());
+            preparedStatement.setInt(5, student.getId());
+            return preparedStatement.executeUpdate() == 1;
+        } catch (SQLException e) {
+            System.out.println("Error");
+            return false;
+        }
+    }
+
+    @Override
+    public List<StudentDto> search(String name, Integer gender, Integer idClass) throws SQLException {
+        Connection connection = DBConnection.getConnection();
+        List<StudentDto> studentList = new ArrayList<>();
+
+        String sql = "select s.*, c.name as class_name " +
+                "from student s join clazz c on s.id_class=c.id and s.isDeleted=0 " +
+                "where 1=1 ";
+
+        if (name != null && !name.isEmpty()) {
+            sql += "and s.name like ? ";
+        }
+        if (gender != null) {
+            sql += "and s.gender = ? ";
+        }
+        if (idClass != null) {
+            sql += "and s.id_class = ? ";
+        }
+
+        PreparedStatement ps = connection.prepareStatement(sql);
+        int index = 1;
+        if (name != null && !name.isEmpty()) {
+            ps.setString(index++, "%" + name + "%");
+        }
+        if (gender != null) {
+            ps.setInt(index++, gender);
+        }
+        if (idClass != null) {
+            ps.setInt(index++, idClass);
+        }
+
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            studentList.add(new StudentDto(
+                    rs.getInt("id"),
+                    rs.getString("name"),
+                    rs.getBoolean("gender"),
+                    rs.getDouble("score"),
+                    rs.getString("class_name"),
+                    rs.getInt("id_class")
+            ));
+        }
+
+        return studentList;
     }
 }

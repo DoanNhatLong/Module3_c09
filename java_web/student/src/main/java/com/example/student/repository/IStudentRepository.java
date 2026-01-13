@@ -11,4 +11,6 @@ public interface IStudentRepository {
     boolean addStudent(Student temp);
     boolean deleteByID( int id);
     StudentDto findByID(int id) throws SQLException;
+    boolean updateStudent(Student student);
+    List<StudentDto> search(String name, Integer gender, Integer idClass) throws SQLException;
 }

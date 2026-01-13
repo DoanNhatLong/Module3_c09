@@ -1,80 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
+<%--
+  Created by IntelliJ IDEA.
+  User: Yuan
+  Date: 1/12/2026
+  Time: 3:39 PM
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Navbar</title>
-    <link rel="stylesheet" href="bootstrap-5.3.8-dist/bootstrap-5.3.8-dist/css/bootstrap.css">
-    <script src="bootstrap-5.3.8-dist/bootstrap-5.3.8-dist/js/bootstrap.js"></script>
-    <link rel="stylesheet" href="css/ss8_navbar.css">
-    <script src="bootstrap-5.3.8-dist/bootstrap-5.3.8-dist/js/bootstrap.bundle.js"></script>
+    <title>Title</title>
 </head>
-<style>
-
-</style>
 <body>
 <main>
-    <nav class="navbar bg-light fixed-top d-flex align-items-center ">
-        <div class="container">
-            <a href="/" class="btn btn-success">
-                Trang chủ
-            </a>
-            <form class="mx-auto" role="search">
-                <input class="form-control me-2"
-                       type="search"
-                       placeholder=" Tìm sách, tác giả ..."
-                       aria-label="Search"
-                       style="width: 30rem;">
-            </form>
 
-            <div class="ms-auto d-flex align-items-center g-2">
-                <div class="dropdown">
-                    <button class="btn p-0 border-0 bg-transparent me-3"
-                            type="button"
-                            id="MenuButton1"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false"
-                            style="font-size: 1.6rem">
-                        🔔
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <li class="dropdown-header"> Thông báo</li>
-                        <li><a class="dropdown-item" href="#">Bạn có đơn hàng mới</a></li>
-                        <li><a class="dropdown-item" href="#">Khuyến mãi hôm nay</a></li>
-                        <li><a class="dropdown-item text-center" href="#">Xem tất cả</a></li>
-                    </ul>
-                    <button
-                            class="btn p-0 border-0 bg-transparent me-3"
-                            data-bs-toggle="modal"
-                            data-bs-target="#historyModal"
-                            style="font-size: 1.6rem"
-                            title="Tủ sách"
-                    >
-                        📖
-                    </button>
-
-                    <button class="btn p-0 border-0 bg-transparent me-3"
-                            type="button"
-                            id="menuButton2"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false"
-                            style="font-size: 1.6rem">
-                        👤
-                    </button>
-                    <div class="dropdown-menu">
-                        <div class="dropdown-header">
-                            <p> User</p>
-                            <p> Số BP còn lại </p>
-                        </div>
-                        <button class="dropdown-item">Chi tiết tài khoản</button>
-                        <button class="dropdown-item">Mua BP</button>
-                        <button class="dropdown-item text-danger"> Đăng xuất</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-    </nav>
     <nav class="navbar bg-black" style="margin-top: 4rem; height: 3rem;">
         <div class="container d-flex  align-items-center" id="subNavbar">
             <div>
@@ -156,32 +94,7 @@
             </div>
         </div>
     </div>
-    <div class="container mt-3" id="content2">
-        <div class="row gx-4">
-            <div class="col-3 bg-muted">
-                <div class="row">
-                    <p>123</p>
-                </div>
-                <div class="row">
-                    <p>125</p>
-                </div>
-                <div class="row">
-                    <p>125</p>
-                </div>
-            </div>
 
-            <div class="col-9 bg-success">
-                <div class="row g-0">
-                    <div class="col-3" style="height: 30rem; background-color: lightblue;"></div>
-                    <div class="col-9" style="height: 30rem; background-color: blue;"></div>
-                </div>
-
-                <div class="row g-0 mt-2">
-                    <div class="col-12" style="height: 10rem; background-color: darkgreen;"></div>
-                </div>
-            </div>
-        </div>
-    </div>
 
 
 
@@ -252,8 +165,6 @@
             </div>
         </div>
     </div>
-
-
 </div>
 </body>
 </html>

@@ -31,5 +31,15 @@ public class StudentService implements IStudentService {
         return studentRepository.findByID(id);
     }
 
+    @Override
+    public boolean updateStudent(Student student) {
+        return studentRepository.updateStudent(student);
+    }
+
+    @Override
+    public List<StudentDto> search(String name, Integer gender, Integer idClass) throws SQLException {
+        return studentRepository.search(name, gender, idClass);
+    }
+
 
 }

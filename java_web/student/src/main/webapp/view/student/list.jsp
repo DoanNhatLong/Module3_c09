@@ -13,8 +13,34 @@
     <c:import url="../library.jsp"/>
 </head>
 <body>
+<c:import url="../navbar.jsp"/>
 <div class="container ">
     <h2 class="text-center mb-5"> Quản lí sinh viên </h2>
+    <form action="/students?action=search" method="get">
+        <div class="row g-3 align-items-center mb-3 justify-content-end">
+            <div class="col-3">
+                <input type="text" name="name" class="form-control" placeholder="Tên sinh viên">
+            </div>
+            <div class="col-3">
+                <select name="gender" class="form-select">
+                    <option value="">-- Giới tính --</option>
+                    <option value="1">Nam</option>
+                    <option value="0">Nữ</option>
+                </select>
+            </div>
+            <div class="col-3">
+                <select name="id_class" class="form-select">
+                    <option value="">-- Chọn lớp --</option>
+                    <c:forEach items="${classCG}" var="cls">
+                        <option value="${cls.id}">${cls.name}</option>
+                    </c:forEach>
+                </select>
+            </div>
+        </div>
+        <div class="col-12 mb-3 text-end">
+            <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+        </div>
+    </form>
     <table class="table table-striped ">
         <tr>
             <th>STT</th>
@@ -43,10 +69,7 @@
                     </button>
                 </td>
                 <td>
-                    <button type="button"
-                            class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#detailModal">
-                        Cập nhập
-                    </button>
+                    <a class="btn btn-success" href="/students?action=update&id=${student.id}"> Cập nhập</a>
                 </td>
                 <td>
                     <a class="btn btn-primary" href="/students?action=detail&id=${student.id}"> Xem chi tiết</a>

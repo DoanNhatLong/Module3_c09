@@ -43,8 +43,52 @@ public class StudentController extends HttpServlet {
                     throw new RuntimeException(e);
                 }
             }
+            case "update" -> {
+                try {
+                    updateStudent(req, resp);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            case "search" -> {
+                try {
+                    search(req, resp);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
             default -> showList(req, resp);
         }
+    }
+
+    private void search(HttpServletRequest req, HttpServletResponse resp) throws SQLException, ServletException, IOException {
+        String name = req.getParameter("name");
+        String genderParam = req.getParameter("gender");
+        Integer gender = null;
+        if (genderParam != null && !genderParam.isEmpty()) {
+            gender = Integer.parseInt(genderParam);
+        }
+        String classParam = req.getParameter("id_class");
+        Integer id_class = null;
+        if (classParam != null && !classParam.isEmpty()) {
+            id_class = Integer.parseInt(classParam);
+        }
+        List<StudentDto> studentDto = studentService.search(name, gender, id_class);
+        req.setAttribute("studentList", studentDto);
+        req.setAttribute("classCG", classCgService.getAll());
+        req.getRequestDispatcher("/view/student/list.jsp").forward(req, resp);
+
+    }
+
+    private void updateStudent(HttpServletRequest req, HttpServletResponse resp) throws SQLException, ServletException, IOException {
+        System.out.println("Check");
+        int id = Integer.parseInt(req.getParameter("id"));
+        StudentDto studentDto = studentService.findByID(id);
+        req.setAttribute("student", studentDto);
+        req.setAttribute("classCG", classCgService.getAll());
+        System.out.println("Student ID: " + studentDto.getId());
+        req.getRequestDispatcher("view/student/update.jsp").forward(req, resp);
+
     }
 
     private void goDetail(HttpServletRequest req, HttpServletResponse resp) throws SQLException, ServletException, IOException {
@@ -66,13 +110,28 @@ public class StudentController extends HttpServlet {
             case "create" -> createStudent(req, resp);
             case "delete" -> deleteStudent(req, resp);
             case "search" -> searchByName(req, resp);
+            case "update" -> update_Student(req, resp);
             default -> showList(req, resp);
         }
+    }
+
+    private void update_Student(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        int id = Integer.parseInt(req.getParameter("id"));
+        String name = req.getParameter("name");
+        boolean gender = Boolean.parseBoolean(req.getParameter("gender"));
+        double score = Double.parseDouble(req.getParameter("score"));
+        int id_class = Integer.parseInt(req.getParameter("id_class"));
+        Student student = new Student(id, name, gender, score, id_class);
+        boolean flag = studentService.updateStudent(student);
+        String mess = flag ? "Cập nhập thành công" : "Cập nhập thất bại";
+        req.getSession().setAttribute("message", mess);
+        resp.sendRedirect("/students");
     }
 
     private void showList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
             req.setAttribute("studentList", studentService.getAll());
+            req.setAttribute("classCG", classCgService.getAll());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

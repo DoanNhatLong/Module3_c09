@@ -11,8 +11,10 @@
 <head>
   <title>Title</title>
   <c:import url="library.jsp"/>
+
 </head>
 <body>
+<c:import url="navbar.jsp"/>
 <h1>Đây là trang home</h1>
 <a class="btn btn-primary"  href="/students">Quản lý sinh viên </a>
 
